@@ -1,6 +1,6 @@
 package org.example.model;
 
-public final class Review {
+public class Review {
 
     public static final int MIN_RATING = 1;
     public static final int MAX_RATING = 5;
