@@ -1,5 +1,6 @@
-package org.example.model;
+package org.example;
 
+import org.example.model.Ingredient;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertThrows;
 import static org.testng.AssertJUnit.assertEquals;
