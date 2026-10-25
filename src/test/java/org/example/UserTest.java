@@ -12,7 +12,7 @@ public class UserTest {
     void storesUsernameAndPassword(){
         User user = new User("alice", "abc");
         assertEquals("alice", user.getUsername());
-        assertEquals("abc", user.getPasswordHash());
+        assertEquals("abc", user.getPassword());
     }
 
     @Test

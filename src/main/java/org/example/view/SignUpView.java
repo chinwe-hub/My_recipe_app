@@ -1,12 +1,18 @@
 package org.example.view;
 
 import org.example.model.User;
+import org.example.repository.UserRepository;
+import org.example.repository.UserStorageRepository;
+import org.example.service.AuthenticationService;
 import org.example.util.ConsoleInput;
 import java.util.Scanner;
 
 public class SignUpView {
+    private final UserRepository userRepository = new UserStorageRepository();
+    private final AuthenticationService authenticationService = new AuthenticationService(userRepository);
     private final Scanner scanner = new Scanner(System.in);
     private final ConsoleInput input = new ConsoleInput(scanner);
+    public User currentUser;
 
     private void signUp() {
         System.out.println("\n--- Sign Up ---");
