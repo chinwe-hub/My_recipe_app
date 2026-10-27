@@ -1,17 +1,14 @@
 package org.example.model;
 
-public class User {
+public class User extends Person{
 
     private final String username;
     private final String password;
 
     public User(String username, String password) {
-
-        if (username == null || username.trim().isEmpty()) {
-            throw new IllegalArgumentException("Username cannot be null or empty");
-        }
+        super(username);
         if (password == null || password.isEmpty()) {
-            throw new IllegalArgumentException("Password cannot be null or empty");
+            throw new IllegalArgumentException("Password is required");
         }
         this.username = username;
         this.password = password;
