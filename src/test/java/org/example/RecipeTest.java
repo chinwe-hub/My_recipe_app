@@ -75,8 +75,8 @@ public class RecipeTest {
     @Test
     void averageRatingIsMeanOfAllReviews() {
         Recipe recipe = sampleRecipe();
-        recipe.addReview(new Review("alice", 5, "great"));
-        recipe.addReview(new Review("bob", 4, "good"));
+        recipe.addReview(new Review("alice", 5, "great", 5));
+        recipe.addReview(new Review("bob", 4, "good", 4));
         assertEquals(4.5, recipe.getAverageRating(), 0.0001);
         assertEquals(2, recipe.getReviews().size());
     }
@@ -84,18 +84,18 @@ public class RecipeTest {
     @Test
     void sameUserReviewReplacesTheOldOne() {
         Recipe recipe = sampleRecipe();
-        recipe.addReview(new Review("alice", 1, "bad"));
-        recipe.addReview(new Review("alice", 5, "better now"));
+        recipe.addReview(new Review("alice", 1, "bad", 3));
+        recipe.addReview(new Review("alice", 5, "better now", 2));
         assertEquals(1, recipe.getReviews().size());
-        assertEquals(5, recipe.getReviews().get(0).getRating());
+        assertEquals(5, recipe.getReviews().getFirst().getRating());
         assertEquals(5.0, recipe.getAverageRating(), 0.0001);
     }
 
     @Test
     void reviewsKeepInsertionOrder() {
         Recipe recipe = sampleRecipe();
-        recipe.addReview(new Review("alice", 5, "a"));
-        recipe.addReview(new Review("bob", 4, "b"));
+        recipe.addReview(new Review("alice", 5, "a", 5));
+        recipe.addReview(new Review("bob", 5, "b", 4));
         assertEquals("alice", recipe.getReviews().get(0).getUsername());
         assertEquals("bob", recipe.getReviews().get(1).getUsername());
     }

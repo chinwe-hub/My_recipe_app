@@ -28,6 +28,27 @@ public class AuthenticationService {
         return user;
     }
 
+
+    public Optional<User> login(String username, String password) {
+        if (username == null || password == null) {
+            return Optional.empty();
+        }
+
+        Optional<User> user =
+                userRepository.findByUsername(username.trim());
+
+        if (user.isEmpty()) {
+            return Optional.empty();
+        }
+
+        String candidate = user.get().getPassword();
+
+        return candidate.equals(password)
+                ? user
+                : Optional.empty();
+    }
+
+
     private void validatePassword(String password) {
         if (password == null || password.length() < 8) {
             throw new IllegalArgumentException("Password must contain at least 8 characters.");

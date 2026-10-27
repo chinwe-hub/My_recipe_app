@@ -23,8 +23,8 @@ public class ConsoleInput {
         while (true) {
             System.out.print(prompt);
             String value = scanner.nextLine();
-            if (value.length() >= 8) return value;
-            System.out.println("Password must contain at least 8 characters.");
+            if (value.length() >= 4) return value;
+            System.out.println("Password must contain at least 4 characters.");
         }
     }
 
