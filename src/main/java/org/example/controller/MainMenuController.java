@@ -36,6 +36,7 @@ public class MainMenuController {
             case 4 -> shoppingListController.generateShoppingList();
             case 5 -> recipeController.saveRecipe();
             case 6 -> reviewController.submitReview(currentUser);
+            case 7 -> reviewController.viewReviews();
             case 8 -> {
                 System.out.println("You have logged out.");
                 return new Result(null, true);
