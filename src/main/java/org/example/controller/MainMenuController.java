@@ -6,12 +6,14 @@ import org.example.util.ConsoleInput;
 public class MainMenuController {
     private final ConsoleInput input;
     private final RecipeController recipeController;
+    private final ReviewController reviewController;
     private final ShoppingListController shoppingListController;
     public MainMenuController(ConsoleInput input, RecipeController recipeController,
-                              ShoppingListController shoppingListController) {
+                              ShoppingListController shoppingListController,  ReviewController reviewController) {
         this.input = input;
         this.recipeController = recipeController;
         this.shoppingListController = shoppingListController;
+        this.reviewController = reviewController;
     }
 
     public Result showMenu(User currentUser) {
@@ -33,6 +35,7 @@ public class MainMenuController {
             case 3 -> recipeController.viewRecipeDetails();
             case 4 -> shoppingListController.generateShoppingList();
             case 5 -> recipeController.saveRecipe();
+            case 6 -> reviewController.submitReview(currentUser);
             case 8 -> {
                 System.out.println("You have logged out.");
                 return new Result(null, true);

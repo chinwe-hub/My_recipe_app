@@ -36,7 +36,7 @@ public class Main {
                 shoppingListService, fileExporter);
         ReviewController reviewController = new ReviewController(input, recipeController, reviewService);
         WelcomeMenuController welcomeMenuController = new WelcomeMenuController(input, authenticationController, recipeController);
-        MainMenuController mainMenuController = new MainMenuController(input, recipeController, shoppingListController);
+        MainMenuController mainMenuController = new MainMenuController(input, recipeController, shoppingListController, reviewController);
 
         User currentUser = null;
         boolean running = true;
