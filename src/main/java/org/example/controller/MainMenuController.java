@@ -1,17 +1,15 @@
-package org.example.view;
+package org.example.controller;
 
 import org.example.model.User;
 import org.example.util.ConsoleInput;
 
-import java.util.Scanner;
-
-public class MainMenuView {
+public class MainMenuController {
     private final ConsoleInput input;
-    private final RecipeView recipeView;
+    private final RecipeController recipeController;
 
-    public MainMenuView(ConsoleInput input, RecipeView recipeView) {
+    public MainMenuController(ConsoleInput input, RecipeController recipeController) {
         this.input = input;
-        this.recipeView = recipeView;
+        this.recipeController = recipeController;
     }
 
     public Result showMenu(User currentUser) {
@@ -28,7 +26,7 @@ public class MainMenuView {
         int choice = input.readInt("Choose an option: ", 0, 8);
 
         switch (choice) {
-            case 1 -> recipeView.browseRecipes();
+            case 1 -> recipeController.browseRecipes();
             case 8 -> {
                 System.out.println("You have logged out.");
                 return new Result(null, true);

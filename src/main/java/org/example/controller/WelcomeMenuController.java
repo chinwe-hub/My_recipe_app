@@ -1,17 +1,17 @@
-package org.example.view;
+package org.example.controller;
 
 import org.example.model.User;
 import org.example.util.ConsoleInput;
 
-public class WelcomeMenuView {
+public class WelcomeMenuController {
     private final ConsoleInput input;
-    private final AuthenticationView authenticationView;
-    private final RecipeView recipeView;
+    private final AuthenticationController authenticationController;
+    private final RecipeController recipeController;
 
-    public WelcomeMenuView(ConsoleInput input, AuthenticationView authenticationView, RecipeView recipeView) {
+    public WelcomeMenuController(ConsoleInput input, AuthenticationController authenticationController, RecipeController recipeController) {
         this.input = input;
-        this.authenticationView = authenticationView;
-        this.recipeView = recipeView;
+        this.authenticationController = authenticationController;
+        this.recipeController = recipeController;
     }
 
     public Result showMenu() {
@@ -23,10 +23,10 @@ public class WelcomeMenuView {
         int choice = input.readInt("Choose an option: ", 0, 3);
 
         return switch (choice) {
-            case 1 -> new Result(authenticationView.signUp(), true);
-            case 2 -> new Result(authenticationView.logIn(), true);
+            case 1 -> new Result(authenticationController.signUp(), true);
+            case 2 -> new Result(authenticationController.logIn(), true);
             case 3 -> {
-                recipeView.browseRecipes();
+                recipeController.browseRecipes();
                 yield new Result(null, true);
             }
             case 0 -> new Result(null, false);

@@ -2,15 +2,17 @@ package org.example;
 
 import org.example.model.Recipe;
 import org.example.model.User;
+import org.example.repository.ReviewRepository;
+import org.example.repository.ReviewStorageRepository;
 import org.example.repository.UserRepository;
 import org.example.repository.UserStorageRepository;
 import org.example.service.AuthenticationService;
 import org.example.service.RecipeService;
 import org.example.util.ConsoleInput;
-import org.example.view.AuthenticationView;
-import org.example.view.MainMenuView;
-import org.example.view.RecipeView;
-import org.example.view.WelcomeMenuView;
+import org.example.controller.AuthenticationController;
+import org.example.controller.MainMenuController;
+import org.example.controller.RecipeController;
+import org.example.controller.WelcomeMenuController;
 import java.util.Scanner;
 
 public class Main {
@@ -20,11 +22,12 @@ public class Main {
 
         RecipeService recipeService = new RecipeService(Recipe.createSampleRecipes());
         UserRepository userRepository = new UserStorageRepository();
+        ReviewRepository reviewRepository = new ReviewStorageRepository();
         AuthenticationService authenticationService = new AuthenticationService(userRepository);
-        AuthenticationView authenticationView = new AuthenticationView(input, authenticationService);
-        RecipeView recipeView = new RecipeView(input, recipeService);
-        WelcomeMenuView welcomeMenuView = new WelcomeMenuView(input, authenticationView, recipeView);
-        MainMenuView mainMenuView = new MainMenuView(input, recipeView);
+        AuthenticationController authenticationController = new AuthenticationController(input, authenticationService);
+        RecipeController recipeController = new RecipeController(input, recipeService);
+        WelcomeMenuController welcomeMenuController = new WelcomeMenuController(input, authenticationController, recipeController);
+        MainMenuController mainMenuController = new MainMenuController(input, recipeController);
 
         User currentUser = null;
         boolean running = true;
@@ -35,11 +38,11 @@ public class Main {
 
         while (running) {
             if (currentUser == null) {
-                WelcomeMenuView.Result result = welcomeMenuView.showMenu();
+                WelcomeMenuController.Result result = welcomeMenuController.showMenu();
                 currentUser = result.user();
                 running = result.running();
             } else {
-                MainMenuView.Result result = mainMenuView.showMenu(currentUser);
+                MainMenuController.Result result = mainMenuController.showMenu(currentUser);
                 currentUser = result.user();
                 running = result.running();
             }

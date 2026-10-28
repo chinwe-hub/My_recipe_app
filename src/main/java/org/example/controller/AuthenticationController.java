@@ -1,14 +1,14 @@
-package org.example.view;
+package org.example.controller;
 
 import org.example.model.User;
 import org.example.service.AuthenticationService;
 import org.example.util.ConsoleInput;
 
-public class AuthenticationView {
+public class AuthenticationController {
     private final ConsoleInput input;
     private final AuthenticationService authenticationService;
 
-    public AuthenticationView(ConsoleInput input, AuthenticationService authenticationService) {
+    public AuthenticationController(ConsoleInput input, AuthenticationService authenticationService) {
         this.input = input;
         this.authenticationService = authenticationService;
     }
