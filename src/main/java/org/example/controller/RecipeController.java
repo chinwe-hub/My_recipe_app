@@ -15,6 +15,8 @@ public class RecipeController {
 
     public void browseRecipes() {
         System.out.println("\n--- Available Recipes ---");
+        recipeService.getAllRecipes().forEach(recipe ->
+                System.out.printf("%d. %s (%s)%n", recipe.getId(), recipe.getName(), recipe.getCategory()));
     }
 
 }
