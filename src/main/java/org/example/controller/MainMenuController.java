@@ -28,6 +28,7 @@ public class MainMenuController {
         switch (choice) {
             case 1 -> recipeController.browseRecipes();
             case 2 -> recipeController.searchRecipes();
+            case 3 -> recipeController.viewRecipeDetails();
             case 8 -> {
                 System.out.println("You have logged out.");
                 return new Result(null, true);
