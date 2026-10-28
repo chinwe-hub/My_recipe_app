@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.controller.*;
 import org.example.model.Recipe;
 import org.example.model.User;
 import org.example.repository.ReviewRepository;
@@ -8,11 +9,9 @@ import org.example.repository.UserRepository;
 import org.example.repository.UserStorageRepository;
 import org.example.service.AuthenticationService;
 import org.example.service.RecipeService;
+import org.example.service.ReviewService;
 import org.example.util.ConsoleInput;
-import org.example.controller.AuthenticationController;
-import org.example.controller.MainMenuController;
-import org.example.controller.RecipeController;
-import org.example.controller.WelcomeMenuController;
+
 import java.util.Scanner;
 
 public class Main {
@@ -22,10 +21,12 @@ public class Main {
 
         RecipeService recipeService = new RecipeService(Recipe.createSampleRecipes());
         UserRepository userRepository = new UserStorageRepository();
-        ReviewRepository reviewRepository = new ReviewStorageRepository();
+        ReviewStorageRepository reviewStorageRepository = new ReviewStorageRepository();
         AuthenticationService authenticationService = new AuthenticationService(userRepository);
+        ReviewService reviewService = new ReviewService(reviewStorageRepository, recipeService);
         AuthenticationController authenticationController = new AuthenticationController(input, authenticationService);
         RecipeController recipeController = new RecipeController(input, recipeService);
+        ReviewController reviewController = new ReviewController(input, recipeController, reviewService);
         WelcomeMenuController welcomeMenuController = new WelcomeMenuController(input, authenticationController, recipeController);
         MainMenuController mainMenuController = new MainMenuController(input, recipeController);
 
