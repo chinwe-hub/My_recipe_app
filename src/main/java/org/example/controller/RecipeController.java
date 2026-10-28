@@ -3,7 +3,10 @@ package org.example.controller;
 import org.example.model.Recipe;
 import org.example.service.RecipeService;
 import org.example.util.ConsoleInput;
+import org.example.util.FileExporter;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,10 +14,13 @@ import java.util.Optional;
 public class RecipeController {
     private final ConsoleInput input;
     private final RecipeService recipeService;
+    private final FileExporter fileExporter;
 
-    public RecipeController(ConsoleInput input, RecipeService recipeService) {
+    public RecipeController(ConsoleInput input, RecipeService recipeService,
+                            FileExporter fileExporter) {
         this.input = input;
         this.recipeService = recipeService;
+        this.fileExporter = fileExporter;
     }
 
     public void browseRecipes() {
@@ -35,6 +41,17 @@ public class RecipeController {
 
     public void viewRecipeDetails() {
         chooseRecipe().ifPresent(this::printRecipe);
+    }
+
+    public void saveRecipe() {
+        Optional<Recipe> recipe = chooseRecipe();
+        if (recipe.isEmpty()) return;
+        try {
+            Path path = fileExporter.exportRecipe(recipe.get());
+            System.out.println("Recipe saved to: " + path);
+        } catch (IOException ex) {
+            System.out.println("Could not save recipe: " + ex.getMessage());
+        }
     }
 
     private void printRecipeList(List<Recipe> recipes) {

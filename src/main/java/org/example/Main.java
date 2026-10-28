@@ -10,8 +10,11 @@ import org.example.repository.UserStorageRepository;
 import org.example.service.AuthenticationService;
 import org.example.service.RecipeService;
 import org.example.service.ReviewService;
+import org.example.service.ShoppingListService;
 import org.example.util.ConsoleInput;
+import org.example.util.FileExporter;
 
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Main {
@@ -24,11 +27,16 @@ public class Main {
         ReviewStorageRepository reviewStorageRepository = new ReviewStorageRepository();
         AuthenticationService authenticationService = new AuthenticationService(userRepository);
         ReviewService reviewService = new ReviewService(reviewStorageRepository, recipeService);
+        ShoppingListService shoppingListService = new ShoppingListService();
+        FileExporter fileExporter = new FileExporter(Path.of("exports"));
+
         AuthenticationController authenticationController = new AuthenticationController(input, authenticationService);
-        RecipeController recipeController = new RecipeController(input, recipeService);
+        RecipeController recipeController = new RecipeController(input, recipeService, fileExporter);
+        ShoppingListController shoppingListController = new ShoppingListController(input, recipeController,
+                shoppingListService, fileExporter);
         ReviewController reviewController = new ReviewController(input, recipeController, reviewService);
         WelcomeMenuController welcomeMenuController = new WelcomeMenuController(input, authenticationController, recipeController);
-        MainMenuController mainMenuController = new MainMenuController(input, recipeController);
+        MainMenuController mainMenuController = new MainMenuController(input, recipeController, shoppingListController);
 
         User currentUser = null;
         boolean running = true;

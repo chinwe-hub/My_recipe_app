@@ -94,7 +94,20 @@ public class Recipe {
         return (double) total / reviewsByUser.size();
     }
 
-
+    public String toExportText() {
+        StringBuilder text = new StringBuilder();
+        text.append("Recipe: ").append(name).append(System.lineSeparator());
+        text.append("Category: ").append(category).append(System.lineSeparator());
+        text.append("Preparation time: ").append(preparationMinutes).append(" minutes").append(System.lineSeparator());
+        text.append("Cooking time: ").append(cookingMinutes).append(" minutes").append(System.lineSeparator());
+        text.append(System.lineSeparator()).append("Ingredients:").append(System.lineSeparator());
+        ingredients.forEach(item -> text.append("- ").append(item).append(System.lineSeparator()));
+        text.append(System.lineSeparator()).append("Instructions:").append(System.lineSeparator());
+        for (int i = 0; i < instructions.size(); i++) {
+            text.append(i + 1).append(". ").append(instructions.get(i)).append(System.lineSeparator());
+        }
+        return text.toString();
+    }
 
     public static List<Recipe> createSampleRecipes() {
         return List.of(
