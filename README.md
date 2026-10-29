@@ -10,7 +10,6 @@ The project demonstrates object-oriented programming, separation of responsibili
 - [Project Objectives](#project-objectives)
 - [Features](#features)
 - [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
 - [Application Workflow](#application-workflow)
 - [How the Features Work](#how-the-features-work)
 - [Object-Oriented Programming](#object-oriented-programming)
@@ -162,57 +161,6 @@ Review persistence depends on the storage mechanism implemented in the applicati
 | Git and GitHub | Version control and source-code hosting |
 
 The project uses standard Java functionality where possible, keeping the application suitable for learning and demonstrating core Java development skills.
-
-## Project Structure
-
-The project follows a Maven directory layout, with application classes organized into packages according to their responsibilities.
-
-```text
-My_recipe_app/
-│
-├── pom.xml
-├── README.md
-├── .gitignore
-│
-├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── org/
-│   │           └── example/
-│   │               ├── Main.java
-│   │               │
-│   │               ├── model/
-│   │               │   ├── Recipe.java
-│   │               │   ├── Ingredient.java
-│   │               │   ├── User.java
-│   │               │   └── Review.java
-│   │               │
-│   │               ├── repository/
-│   │               │   └── SampleRecipes.java
-│   │               │
-│   │               ├── service/
-│   │               │   ├── AuthenticationService.java
-│   │               │   └── ShoppingListService.java
-│   │               │
-│   │               ├── view/
-│   │               │   ├── AuthenticationView.java
-│   │               │   └── ShoppingListView.java
-│   │               │
-│   │               └── export/
-│   │                   └── FileExporter.java
-│   │
-│   └── test/
-│       └── java/
-│           └── org/
-│               └── example/
-│                   └── RecipeTest.java
-│
-└── exports/
-    ├── exported_recipe_files.txt
-    └── exported_shopping_list_files.txt
-```
-
-**Important:** This is an illustrative structure. Keep the package names and class names in this section aligned with the actual files in your restructured project. Only include classes that exist in your repository. The `exports` folder is created or populated when the relevant export functionality runs.
 
 ### Responsibilities of the Main Components
 
