@@ -38,7 +38,7 @@ final class SampleRecipes {
                 new Recipe(
                         2,
                         "Spaghetti Carbonara",
-                        "Main Course",
+                        "RecipeBookApplication Course",
                         "Creamy Roman pasta without any cream.",
                         10,
                         20,
@@ -59,7 +59,7 @@ final class SampleRecipes {
                 new Recipe(
                         3,
                         "Chicken Fried Rice",
-                        "Main Course",
+                        "RecipeBookApplication Course",
                         "Quick weeknight dinner using leftover rice.",
                         15,
                         15,

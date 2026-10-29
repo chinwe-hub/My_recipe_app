@@ -114,7 +114,7 @@ public class Recipe {
                 new Recipe(
                         1,
                         "Jollof Rice",
-                        "Main Course",
+                        "RecipeBookApplication Course",
                         "A popular Nigerian rice dish cooked in a rich tomato and pepper sauce.",
                         15,
                         45,
@@ -185,7 +185,7 @@ public class Recipe {
                 new Recipe(
                         4,
                         "Chicken Pasta",
-                        "Main Course",
+                        "RecipeBookApplication Course",
                         "Pasta tossed with tender chicken and a savory tomato sauce.",
                         10,
                         25,

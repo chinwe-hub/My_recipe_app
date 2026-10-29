@@ -1,7 +1,6 @@
 package com.recipebook;
 
 import com.recipebook.controller.*;
-import com.recipebook.controller.*;
 import com.recipebook.model.Recipe;
 import com.recipebook.model.User;
 import com.recipebook.repository.ReviewStorageRepository;
@@ -17,7 +16,7 @@ import com.recipebook.util.FileExporter;
 import java.nio.file.Path;
 import java.util.Scanner;
 
-public class Main {
+public class RecipeBookApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ConsoleInput input = new ConsoleInput(scanner);
